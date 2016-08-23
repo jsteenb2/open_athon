@@ -14,12 +14,12 @@
     <div class="container">
       <div class="panel panel-default">
         <div class="panel-heading bg-danger">
-           <h3 class="panel-title">Danger Zone</h3>
+           <h3 class="panel-title"><%= food.business_name.upcase %></h3>
         </div>
         <div class="panel-body text-<%= color_pick(food) %>">
           <%= link_to food_path(food), class: "text-#{color_pick(food)}" do %>
             <div class="col-sm-12">
-              <%= food.business_name.upcase %>
+              Checked at: <%= food.created_at.strftime('%b/%d/%y') %>
             </br>
               Score: <%= food.avg_score.to_i %>
             </div>
