@@ -1,11 +1,12 @@
 class SearchesController < ApplicationController
 
   def index
+    @food = Food.new
     @zips = zipcode_options
   end
 
   def create
-    white_listed_search_params
+    @results = food_results(white_listed_search_params)
   end
 
   private

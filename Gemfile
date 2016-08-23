@@ -6,6 +6,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'soda-ruby', :require => 'soda'
+gem 'googlestaticmap'
 
 gem 'figaro'
 # Use Puma as the app server

@@ -1,4 +1,9 @@
-<%= form_tag '/search' do %>
-  <%= label_tag :zipcode, "Select zipcode:" %>
-  <%= select_tag "search[zipcode]", @zips  %>
-<% end %>
+<div class="container text-center">
+  <div class="col-sm-6 col-sm-offset-3" >
+    <%= form_for @food, method: :get, class: "form-group" do |f| %>
+      <%= f.label :zipcode %>
+      <%= f.select :zipcode, @zips, class: "form-control" %>
+      <%= f.submit "Find the Scares", class: "btn btn-block btn-primary" %>
+    <% end %>
+  </div>
+</div>

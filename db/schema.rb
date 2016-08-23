@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823170849) do
+ActiveRecord::Schema.define(version: 20160823192503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20160823170849) do
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string   "zipcode"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "business_id"
+    t.string   "business_name"
+    t.string   "risk_category"
+    t.string   "violations"
+    t.string   "avg_score"
+    t.string   "business_latitude"
+    t.string   "business_longitude"
   end
 
   create_table "friendings", force: :cascade do |t|

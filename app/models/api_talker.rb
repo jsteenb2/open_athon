@@ -13,16 +13,11 @@ class APITalker
     @zip = zip
     @start_year = start_year
     @end_year = end_year
-    @client = SODA::Client.new({ domain: "data.sfgov.org", app_token: "xgpISlmQJWsBm1RcWYylRpERi"})
+    @client = SODA::Client.new({ domain: "data.sfgov.org", app_token: ENV[OPEN_DATA_APP_TOKEN] })
   end
 
   def get_scores
     @food_scores = violations_per_restaraunt_year_range(@zip)
-  end
-
-  def violations_endpoint
-    food_ep = SF_GOV_DOMAIN + "resource/" + FOOD_INSPC_DATASET + ".json?"
-    food_ep + "$select"
   end
 
   def food_inspection_request_high_risk
@@ -32,10 +27,10 @@ class APITalker
   def violations_per_restaraunt_year_range(zip, start_year = 2015, end_year = 2016)
     @client.get(FOOD_INSPC_DATASET, {
 
-      "$select" => "business_id, business_name, risk_category, avg(inspection_score) AS avg_score, count(violation_id) AS violations",
+      "$select" => "business_id, business_name, risk_category, business_latitude, business_longitude, avg(inspection_score) AS avg_score, count(violation_id) AS violations",
       "$where" => "date_trunc_y(inspection_date) between '#{start_year}' and '#{end_year}' AND business_postal_code = '#{zip}'",
       "$having" => "avg_score > '0.0'",
-      "$group" => "business_id, business_name, risk_category",
+      "$group" => "business_id, business_name, risk_category, business_latitude, business_longitude",
        "$order" => "avg_score DESC"
      }
     )

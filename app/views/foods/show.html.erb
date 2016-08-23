@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-sm-12 page-header"><%= @food.business_name %></h2>
+    <div class="col-sm-3 col-offset-2">
+      <ul>
+        <li>
+          Score: <%= @food.avg_score.to_i %>
+        </li>
+        <li>
+          Violations: <%= @food.violations %>
+        </li>
+        <li>
+          Risk Level: <%= @food.risk_category %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3">
+      <ul>
+        <li>
+          Location: San Francisco, <%= @food.zipcode %>
+        </li>
+        <% if @food.business_latitude %>
+          <li>
+            Coordinates: Lat(<%= @food.business_latitude[0..5] %>)/ Lon(<%= @food.business_longitude[0..5] %>)
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
