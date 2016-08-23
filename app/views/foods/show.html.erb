@@ -19,6 +19,7 @@
     </div>
     <div class="col-sm-6">
       <% if @food.business_latitude %>
+        <%= render 'key' %>
         <%= image_tag Search.map_a_food(@food) %>
       <% end %>
     </div>
