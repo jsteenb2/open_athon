@@ -1,4 +1,5 @@
 require 'soda/client'
+require 'googlestaticmap'
 
 class APITalker
   attr_reader :food_scores
@@ -13,7 +14,7 @@ class APITalker
     @zip = zip
     @start_year = start_year
     @end_year = end_year
-    @client = SODA::Client.new({ domain: "data.sfgov.org", app_token: ENV[OPEN_DATA_APP_TOKEN] })
+    @client = SODA::Client.new({ domain: "data.sfgov.org", app_token: Rails.application.secrets.open_token })
   end
 
   def get_scores
@@ -26,7 +27,6 @@ class APITalker
 
   def violations_per_restaraunt_year_range(zip, start_year = 2015, end_year = 2016)
     @client.get(FOOD_INSPC_DATASET, {
-
       "$select" => "business_id, business_name, risk_category, business_latitude, business_longitude, avg(inspection_score) AS avg_score, count(violation_id) AS violations",
       "$where" => "date_trunc_y(inspection_date) between '#{start_year}' and '#{end_year}' AND business_postal_code = '#{zip}'",
       "$having" => "avg_score > '0.0'",

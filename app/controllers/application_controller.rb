@@ -1,3 +1,5 @@
+
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
@@ -17,4 +19,5 @@ class ApplicationController < ActionController::Base
     end
     Food.where(zipcode: zipcode).order(avg_score: :desc)
   end
+
 end

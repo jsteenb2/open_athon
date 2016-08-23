@@ -12,19 +12,15 @@
         <li>
           Risk Level: <%= @food.risk_category %>
         </li>
+        <li>
+          Location: San Francisco %>
+        </li>
       </ul>
     </div>
-    <div class="col-sm-3">
-      <ul>
-        <li>
-          Location: San Francisco, <%= @food.zipcode %>
-        </li>
-        <% if @food.business_latitude %>
-          <li>
-            Coordinates: Lat(<%= @food.business_latitude[0..5] %>)/ Lon(<%= @food.business_longitude[0..5] %>)
-          </li>
-        <% end %>
-      </ul>
+    <div class="col-sm-6">
+      <% if @food.business_latitude %>
+        <%= image_tag Search.map_a_food(@food) %>
+      <% end %>
     </div>
   </div>
 </div>

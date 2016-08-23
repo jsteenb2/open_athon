@@ -15,6 +15,12 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style media="screen">
+      <% if @foods %>
+        #rollback { background-image: url(<%= Search.map_food(@foods) %>); }
+      <% end %>
+    </style>
   </head>
 
   <body>
@@ -41,6 +47,10 @@
         </div>
       </div>
 
-      <%= yield %>
+      <div id="rollbox">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
   </body>
 </html>
