@@ -1,0 +1,4 @@
+<%= form_tag '/search' do %>
+  <%= label_tag :zipcode, "Select zipcode:" %>
+  <%= select_tag "search[zipcode]", @zips  %>
+<% end %>
