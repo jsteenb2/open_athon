@@ -1,24 +1,7 @@
-# README
+# San Fran Food Inspection Hack Day
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Description
+Every wonder about the cleanliness of your favorite restaurants in the SF area? This app pin points the cleanest eateries in town using the Socrata API and google static maps API to render the position.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Technical Notes
+Persisted no data in this exercise.  Built using Ruby on Rails and APIs.  APIs include Socrata Open Data API and Google Static Maps API. 
